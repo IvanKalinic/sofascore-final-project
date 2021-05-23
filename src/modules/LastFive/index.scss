@@ -1,0 +1,29 @@
+@use "src/assets/styles/_index.scss" as *;
+
+.score-footer{
+    position:absolute;
+     right:10%;
+     color:green;
+  }
+
+.details{
+    margin-left:10px;
+}
+.footer-container{
+    margin-top:50px;
+    @include flexbox(column,flex-end,"");
+}
+.fav{
+    margin-right: 120px;
+    color:blue;
+}
+.clubs{
+    @include flexbox(center, center, "");
+    position: relative;
+    min-width: 400px;
+    border-radius: 4px;
+    background-color: aliceblue;
+    box-shadow: $light-shadow;
+    margin-bottom:5px;
+    margin-right:10px;
+}

@@ -1,0 +1,47 @@
+@use "src/assets/styles/_index.scss" as *;
+
+.clubs-container {
+  @include flexbox(center, center, "");
+  position: relative;
+  min-width: 400px;
+  border-radius: 4px;
+  background-color: aliceblue;
+  box-shadow: $light-shadow;
+  margin-bottom:5px;
+}
+
+.details {
+  margin-right: 20px;
+}
+
+li {
+  list-style-type: none;
+}
+
+.teams-container {
+  @include flexbox(column, flex-start, center);
+}
+.team-container {
+  @include flexbox(row, center, center);
+  padding:5px 0;
+  margin-left:5px;
+}
+
+.score {
+  position: absolute;
+  right: 16%;
+  color: green;
+}
+
+// .clubs-container {
+//   min-width: 450px;
+//   height: 120px;
+
+// }
+
+.star-container {
+  cursor: pointer;
+  position: absolute;
+  top: 35%;
+  right: 2%;
+}

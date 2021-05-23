@@ -1,0 +1,29 @@
+$primary-color:white;
+$font-family:"Roboto";
+$dark-link:#0788d9;
+$light-link:black;
+$dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+$light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+$nav-toggle: hsl(205, 78%, 60%); //5
+$links: hsl(205, 86%, 81%); //8
+$transition: all 0.3s linear;
+$spacing: 0.1rem;
+$radius: 0.25rem;
+$btncolor: hsl(186, 100%, 94%);
+$btnbackground: hsl(185, 62%, 45%);
+$hoverbackground: hsl(184, 80%, 74%);
+$hovercolor: hsl(185, 91%, 17%);
+
+@mixin flexbox($direction,$align,$justify){
+    display:flex;
+    flex-direction:$direction;
+    align-items: $align;
+    justify-content: $justify;
+}
+
+%flex-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+

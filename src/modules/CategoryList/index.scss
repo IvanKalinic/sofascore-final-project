@@ -1,0 +1,64 @@
+@use "src/assets/styles/_index.scss" as *;
+
+.list-container {
+  margin-bottom: 10px;
+}
+.form-container {
+  @include flexbox(column, center, center);
+}
+.form-item {
+  margin-bottom: 30px;
+}
+
+.categories-container {
+  @include flexbox(column, center, center);
+  list-style-type: none;
+  margin-bottom: 10px;
+}
+
+.style {
+  @include flexbox(row, center, center);
+  min-width: 60px;
+  width: 300px;
+  height: 20px;
+  margin: 5px 60px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: $light-shadow;
+  font-weight: bold;
+  cursor: pointer;
+  img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+  }
+}
+
+.light-link {
+  color: $light-link;
+  text-decoration: none;
+}
+.dark-link {
+  color: $dark-link;
+  text-decoration: none;
+}
+p {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.asia-img {
+  width: 60px;
+  height: 40px;
+}
+.southamerica-img {
+  width: 40px;
+  height: 60px;
+}
+.user-container {
+  margin-left: 15px;
+  @include flexbox(row, center, center);
+}
+.user-text {
+  margin-left: 10px;
+}

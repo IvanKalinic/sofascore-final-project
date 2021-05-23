@@ -1,0 +1,168 @@
+@use "src/assets/styles/_index.scss" as *;
+
+.nav-header {
+  @include flexbox(row, center, space-between);
+  padding: 1rem;
+}
+.logo-container {
+  margin-left: 10px;
+  margin-top: 5px;
+  width: 200px;
+}
+.img-style {
+  height: 50px;
+  width: 50px;
+  // margin-left:-50px;
+}
+.link-container {
+  width: 100%;
+  color: white;
+  text-decoration: none;
+  display: flex;
+}
+.heading-container {
+  width: 100px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.heading {
+  text-decoration: none;
+}
+nav {
+  background: rgb(0, 76, 143);
+  box-shadow: $dark-shadow;
+}
+.nav-toggle {
+  margin-left: -20px;
+  font-size: 1.5rem;
+  color: $nav-toggle;
+  background: transparent;
+  border-color: transparent;
+  transition: $transition;
+  cursor: pointer;
+  outline: none;
+}
+.nav-toggle:hover {
+  transform: rotate(90deg);
+  outline: none;
+}
+
+.links-container {
+  @include flexbox(column, center, center);
+  height: 0px;
+  overflow: hidden;
+  transition: $transition;
+}
+.links {
+  list-style-type: none;
+  margin-left: 100px;
+  align-items: center;
+}
+.link {
+  color: white;
+  text-decoration: none;
+}
+.selected {
+  color: $nav-toggle;
+}
+.links .link {
+  font-size: 1rem;
+  text-transform: capitalize;
+  letter-spacing: $spacing;
+  display: block;
+  padding: 0.5rem 1rem;
+  transition: $transition;
+}
+.links .link:hover {
+  background: $links;
+  color: $nav-toggle;
+  padding-left: 1.5rem;
+}
+
+.switch-button {
+  width: 20px;
+  margin-right: 300px;
+  position: relative;
+  right: -40px;
+}
+
+.user-picture {
+  height: 30px;
+  width: 30px;
+  border-radius: 5px;
+}
+.loggedUser {
+  margin-left: 15px;
+  @include flexbox(row, center, center);
+  margin-right: 10px;
+}
+.loggedUser-name {
+  color: $primary-color;
+  margin-left: 10px;
+}
+.logout {
+  margin-left:15px;
+  cursor: pointer;
+  color: $primary-color;
+  background: transparent;
+  border: transparent;
+  text-transform: capitalize;
+  letter-spacing: $spacing;
+  &:hover{
+    color:#940f2e;
+  }
+}
+
+
+@media screen and (min-width: 800px) {
+  .nav-center {
+    max-width: 1170px;
+    margin: 0 auto;
+    @include flexbox(row, space-between, center);
+    padding: 1rem;
+  }
+  .nav-header {
+    padding: 0;
+  }
+  .nav-toggle {
+    display: none;
+  }
+  .links-container {
+    height: auto !important;
+  }
+  .links {
+    display: flex;
+    margin-left: 10px;
+  }
+  .links .link {
+    padding: 0;
+    margin: 0 0.5rem;
+  }
+  .links .link:hover {
+    padding: 0;
+    background: transparent;
+  }
+  .login-container {
+    @include flexbox(row, center, "");
+  }
+  .switch-button {
+    // position:absolute;
+    // margin-right:400px;
+    position: sticky;
+    margin-right: calc(-280px - 10vw);
+  }
+  .logo-container {
+    position: sticky;
+    margin-left: calc(-100px - 10vw);
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .nav-toggle {
+    margin-left: -80px;
+  }
+  .switch-button {
+    position: relative;
+    right: -10px;
+  }
+}

@@ -1,0 +1,34 @@
+@use "src/assets/styles/_index.scss" as *;
+
+.alert-vh{
+  height:50px;
+}
+
+.event-container {
+  @include flexbox(column,center,center);
+  &:not(last-of-type){
+    margin: 20px;
+  }
+  &:last-of-type{
+    padding-bottom: 20px;
+  }
+}
+.eventlist-container{
+  @include flexbox(column,center,center);
+}
+
+.tournament-container {
+  @extend %flex-box;
+}
+
+.caret{
+  cursor: pointer;
+}
+span {
+  margin-left: 5px;
+}
+
+
+
+
+

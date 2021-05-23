@@ -1,0 +1,32 @@
+
+.alert {
+    padding: 0.75rem 1.25rem;
+    color: #fff;
+    text-align: center;
+    text-transform: capitalize;
+    width: 300px;
+    margin: 2rem auto 0 auto;
+    border-radius: 5px;
+    text-transform: capitalize;
+    
+  }
+  .alert-danger {
+    background-color: #ed4539;
+  }
+  .alert-success {
+    background-color: #4caf50;;
+  }
+  .alert-warning{
+    background-color:#ccc;
+  }
+  // @media screen and (min-width: 601px) {
+  //   .alert {
+  //     width: 85%;
+  //   }
+  // }
+  // @media screen and (min-width: 993px) {
+  //   .alert {
+  //     width: 70%;
+  //   }
+   
+  // }

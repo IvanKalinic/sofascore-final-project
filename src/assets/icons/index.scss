@@ -1,0 +1,36 @@
+.star {
+  cursor: pointer;
+}
+
+@mixin hover($class,$color){
+
+    &:hover {
+      fill:$color;
+    }
+
+}
+
+// @include hover("black");
+// @include hover("purple");
+// @include hover("black");
+
+.bf {
+  &:hover {
+    fill: black;
+  }
+ 
+}
+
+.moon {
+  &:hover {
+    fill: purple;
+  }
+}
+
+.delete{
+  &:hover {
+    .inside{
+    fill: black;
+    }
+  }
+}

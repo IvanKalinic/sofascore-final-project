@@ -79,8 +79,9 @@ function CategoryList() {
         Available categories for {sport}: ({categories.length})
       </p>
       <ul className="categories-container">
-        {categories.map((category) => (
+        {categories.map((category,i) => (
           <Link
+            key={i}
             className={theme === lightTheme ? "light-link" : "dark-link"}
             to={`/category/${category.category.id}`}
           >

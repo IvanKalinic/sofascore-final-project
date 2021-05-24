@@ -1,0 +1,29 @@
+.profile-container{
+    position: relative;
+    width:100%;
+    height:100%;
+    &-img{
+        position:relative;
+        z-index: 1;
+        width:100%;
+        height: 100%;
+        // object-fit: cover;
+    }
+    &-hello{
+        position: absolute;
+        top:0;
+        left:0;
+        width: 100%;
+        height:100%;
+        z-index:10;
+    }
+    &-filter{
+        position: absolute;
+        z-index:5;
+        top:0;
+        left:0;
+        width: 100%;
+        height:100%;
+        background-color: #0000004b;
+    }
+}

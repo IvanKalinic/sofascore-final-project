@@ -6,10 +6,11 @@ function Dropdown({ handleItems, title, items }) {
   const [open, setOpen] = useState(false);
   const [selection, setSelection] = useState("");
   const ref = useRef();
-  
+
   const toggle = () => {
     setOpen(!open);
   };
+
   function handleOnClick(item) {
     setSelection(item);
     handleItems(item);

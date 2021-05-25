@@ -5,14 +5,13 @@ import { useCategories } from "../../context/CategoriesContext";
 import { Datepicker } from "../../components/index";
 import "./index.scss";
 import { useTheme } from "../../context/ThemeContext";
-import { lightTheme, darkTheme } from "../../components/Theme";
+import { lightTheme } from "../../components/Theme";
 import Dropdown from "../../components/Dropdown";
 import Asia from "../../assets/images/asia.png";
 import SouthAmerica from "../../assets/images/southamerica.png";
 import { getZone, getFormattedDate } from "../../utils/index";
 import { useDate } from "../../context/DateContext";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useTrackedEvents } from "../../context/TrackedEventsContext";
 
 function CategoryList() {
   const [categories, setCategories] = useState([]);
@@ -20,9 +19,8 @@ function CategoryList() {
   const { date } = useDate();
   const [sport, setSport] = useState("football");
   const { theme } = useTheme();
-  const { isAuthenticated, loginWithRedirect, logout, user, isLoading } =
-    useAuth0();
-  const { findUser } = useTrackedEvents();
+  const { isAuthenticated, user } = useAuth0();
+
   const isUser = isAuthenticated && user;
 
   const handleSport = (sport) => {
@@ -52,14 +50,14 @@ function CategoryList() {
   return (
     <div className="list-container">
       <div className="header-flex">
-        <p className="user-container">
+        <div className="user-container">
           {isUser && user.picture && (
             <img className="user-picture" src={user.picture} alt={user.name} />
           )}
           {isUser && user.name && (
             <h4 className="user-text"> Welcome,{user.name} </h4>
           )}
-        </p>
+        </div>
         <p>Select your favourite category</p>
       </div>
 
@@ -79,7 +77,7 @@ function CategoryList() {
         Available categories for {sport}: ({categories.length})
       </p>
       <ul className="categories-container">
-        {categories.map((category,i) => (
+        {categories.map((category, i) => (
           <Link
             key={i}
             className={theme === lightTheme ? "light-link" : "dark-link"}
@@ -95,6 +93,7 @@ function CategoryList() {
                 ) : (
                   <img
                     src={`https://flagcdn.com/16x12/${category.category.alpha2?.toLowerCase()}.png`}
+                    alt=""
                     onError={(i) => (i.target.style.display = "none")}
                   />
                 )}

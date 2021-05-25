@@ -6,14 +6,15 @@ import { convertTimestampToDatetime } from "../../utils/index";
 import { Link } from "react-router-dom";
 import { Alert } from "../../components/index";
 import { DetailsBf, Delete } from "../../assets/icons";
-
+import { useAuth0 } from "@auth0/auth0-react";
 
 function TrackedEvents() {
   const { users, removeTracked, alert, handleAlert, findUser } =
     useTrackedEvents();
-
+  const { user } = useAuth0();
   const clicked = useRef(0);
-  let currentUser = findUser();
+  // let currentUser = findUser();
+  let currentUser = findUser(user);
 
   const handleRemove = (e) => {
     clicked.current++;
@@ -25,13 +26,15 @@ function TrackedEvents() {
       handleAlert({ type: "danger", text: "Event deleted" });
   }, [users]);
 
+  // console.log(currentUser.user.favourites);
   //currentUser.user.favourites
+
   return (
     <div>
       {alert.show && <Alert type={alert.type} text={alert.text} />}
       {currentUser ? (
-        currentUser.user.favourites.map((event) => (
-          <div className="event-container">
+        currentUser.user.favourites.map((event,i) => (
+          <div className="event-container" key={i}>
             <div className="eventlist-container">
               {event.uniqueTournament ? (
                 <div className="tournament-container">

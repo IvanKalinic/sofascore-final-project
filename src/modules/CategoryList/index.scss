@@ -57,6 +57,7 @@ p {
 }
 .user-container {
   margin-left: 15px;
+  margin-top:15px;
   @include flexbox(row, center, center);
 }
 .user-text {

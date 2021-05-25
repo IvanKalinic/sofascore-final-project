@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef} from "react";
 import { NavLink, Link } from "react-router-dom";
 import SofaScoreLogo from "../../assets/images/sofascorelogo.png";
 import { MenuItem } from "../../assets/icons/index";

@@ -16,23 +16,22 @@ export function useTrackedEvents() {
 
   return trackedEventsContext;
 }
-let temp = [];
-export function TrackedEventsProvider({ children }) {
-  //  const [trackedEvents, setTrackedEvents] = useLocalStorage("favourites",[]);
-  // const [trackedEvents, setTrackedEvents] = useState([
-  //   { user: "", favourites: [] },
-  // ]);
-  const [changed, setChanged] = useState(false);
 
+let temp = [];
+
+export function TrackedEventsProvider({ children }) {
   const [users, setUsers] = useLocalStorage("users", []);
   const [alert, setAlert] = useState({ show: false });
+  const [profileImage, setProfileImage] = useState("");
+  // const [currentUser,setCurrentUser] = useLocalStorage("currentUser",{});
+
   const { user } = useAuth0();
 
   const handleAlert = ({ type, text }) => {
-      setAlert({ show: true, type, text });
-      setTimeout(() => {
-        setAlert({ show: false });
-      }, 1000);
+    setAlert({ show: true, type, text });
+    setTimeout(() => {
+      setAlert({ show: false });
+    }, 1000);
   };
 
   useEffect(() => {
@@ -40,6 +39,7 @@ export function TrackedEventsProvider({ children }) {
       if (!users.find((u) => u.user.name === user.name)) {
         temp = [];
         console.log(`Temp is ${temp}`);
+        // setCurrentUser(user);
       }
     }
   }, []);
@@ -67,30 +67,64 @@ export function TrackedEventsProvider({ children }) {
       {
         user: {
           ...user,
+          profileImage: profileImage,
           favourites: temp,
         },
       },
     ]);
-    setChanged(true);
   };
+
   const removeTracked = (e) => {
     console.log(e.id);
-    let userEvent = findUser();
+    let userEvent = findUser(user);
     temp = userEvent.user.favourites.filter((ev) => ev.id !== e.id);
-    console.log(temp);
+    // console.log(temp);
+    setUsers([
+      {
+        user: {
+          ...user,
+          profileImage: profileImage,
+          favourites: temp,
+        },
+      },
+    ]);
+  };
+
+  const findUser = (user) => {
+    if (user) {
+      // console.log(users);
+      return users.find((u) => u.user.name === user.name);
+    }
+  };
+
+  const saveImage = (image) => {
+    setProfileImage(image);
     setUsers([
       {
         user: {
           ...user,
           favourites: temp,
+          profileImage: image,
         },
       },
     ]);
-    setChanged(true);
   };
-  const findUser = () => {
-    if (user) return users.find((u) => u.user.name === user.name);
+
+  const deleteImage = () => {
+    setProfileImage("");
+    setUsers([
+      {
+        user: {
+          ...user,
+          favourites: temp,
+          profileImage: "",
+        },
+      },
+    ]);
   };
+
+  // console.log(temp);
+  // console.log(users);
 
   const value = {
     users,
@@ -99,6 +133,8 @@ export function TrackedEventsProvider({ children }) {
     handleAlert,
     addToTracked,
     removeTracked,
+    saveImage,
+    deleteImage,
   };
 
   return (

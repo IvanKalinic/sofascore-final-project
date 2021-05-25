@@ -14,12 +14,12 @@ import { useAuth0 } from "@auth0/auth0-react";
 function CategoryEvents() {
   const { id } = useParams();
   const { date } = useCategories();
-  const { addToTracked, removeTracked, trackedEvents, alert, handleAlert } =
+  const { addToTracked, removeTracked, alert, handleAlert } =
     useTrackedEvents();
   const [error, setError] = useState(false);
   const [tournaments, setTournaments] = useState([]);
-  const { user } = useAuth0();
   const { findUser } = useTrackedEvents();
+  const { user } = useAuth0();
 
   const handleAdd = (e) => {
     if (!user) {
@@ -49,12 +49,12 @@ function CategoryEvents() {
       })
     );
   };
-  // console.log(users);
+  // console.log(user);
 
   useEffect(() => {
     setTournaments([]);
     let foundUser = findUser(user);
-    console.log(foundUser);
+    // console.log(foundUser);
     getCategoryEvents(id, getFormattedDate(date))
       .then((res) => {
         if (res.events.length > 0) {
@@ -122,6 +122,8 @@ function CategoryEvents() {
       });
   }, [id]);
 
+  // console.log(tournaments);
+
   return (
     <div className="parent-container">
       <div className="alert-vh">
@@ -129,7 +131,7 @@ function CategoryEvents() {
       </div>
       {tournaments.length > 0 ? (
         tournaments.map((e) => (
-          <div className="event-container">
+          <div className="event-container" key={e.tournament.id}>
             {e.tournament.uniqueTournament ? (
               <div className="eventlist-container">
                 <div className="tournament-container">
@@ -147,15 +149,15 @@ function CategoryEvents() {
                       <Event
                         id={id}
                         key={ev.id}
-                        eventId={ev.id}
-                        startTimestamp={ev.startTimestamp}
-                        homeTeam={ev.homeTeam}
-                        awayTeam={ev.awayTeam}
-                        awayScore={ev.awayScore.current}
-                        homeScore={ev.homeScore.current}
-                        status={ev.status.code}
                         event={ev}
                         handleAdd={handleAdd}
+                        // eventId={ev.id}
+                        // startTimestamp={ev.startTimestamp}
+                        // homeTeam={ev.homeTeam}
+                        // awayTeam={ev.awayTeam}
+                        // awayScore={ev.awayScore.current}
+                        // homeScore={ev.homeScore.current}
+                        // status={ev.status.code}
                       />
                     ) : null}
                   </div>

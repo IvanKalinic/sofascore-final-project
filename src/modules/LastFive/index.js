@@ -7,27 +7,24 @@ import "./index.scss";
 
 function LastFive() {
   const [lastEvents, setLastEvents] = useState([]);
-  const { users,findUser,changed } = useTrackedEvents();
+  const { findUser } = useTrackedEvents();
   const { user } = useAuth0();
 
   let currentUser = findUser(user);
-  
-  console.log(currentUser);
-  
+
+  // console.log(currentUser);
+
   useEffect(() => {
-    
-    if(currentUser)
-      setLastEvents(lastFive(currentUser.user.favourites));
+    if (currentUser) setLastEvents(lastFive(currentUser.user.favourites));
+  }, [currentUser]);
 
-  }, [users]);
-
-  console.log(lastEvents);
+  // console.log(lastEvents);
 
   return (
     <div className="footer-container">
-        <h1 className="fav">Favourites:</h1>
+      <h1 className="fav">Favourites:</h1>
       {lastEvents.map((ev) => (
-        <div className="events">
+        <div className="events" key={ev.id}>
           <div className="eventlist-container">
             {ev.uniqueTournament ? (
               <div className="tournament-container">

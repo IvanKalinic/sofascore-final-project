@@ -1,41 +1,34 @@
-import React,{memo} from "react";
+import React, { memo } from "react";
 import { Link } from "react-router-dom";
 import { TeamImage } from "../index";
 import { convertTimestampToDatetime } from "../../utils/index";
 import { DetailsBf, Star, StarFilled } from "../../assets/icons";
 import "./index.scss";
 
-function Event({
-  awayScore,
-  homeScore,
-  handleAdd,
-  event,
-  id,
-  eventId,
-  startTimestamp,
-  homeTeam,
-  awayTeam,
-  status,
-}) {
+function Event({ id, event, handleAdd }) {
   return (
     <div className="clubs-container">
       <div className="details">
-        <Link to={`/category/${id}/${eventId}/eventDetails`}>
+        <Link to={`/category/${id}/${event.id}/eventDetails`}>
           <DetailsBf />
         </Link>
-        <li>{convertTimestampToDatetime(startTimestamp)}</li>
+        <li>{convertTimestampToDatetime(event.startTimestamp)}</li>
       </div>
       <div className="teams-container">
         <div className="team-container">
-          <TeamImage id={homeTeam.id} />
-          <span>{homeTeam.name} </span>
-          <span className="score">{status !== 0 ? homeScore : null}</span>
+          <TeamImage id={event.homeTeam.id} />
+          <span>{event.homeTeam.name} </span>
+          <span className="score">
+            {event.status.code !== 0 ? event.homeScore.current : null}
+          </span>
         </div>
 
         <div className="team-container">
-          <TeamImage id={awayTeam.id} />
-          <span>{awayTeam.name}</span>
-          <span className="score">{status !== 0 ? awayScore : null}</span>
+          <TeamImage id={event.awayTeam.id} />
+          <span>{event.awayTeam.name}</span>
+          <span className="score">
+            {event.status.code !== 0 ? event.awayScore.current : null}
+          </span>
         </div>
       </div>
 

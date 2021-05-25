@@ -19,7 +19,7 @@ export function ThemeProvider({ children }) {
   const [checked, setChecked] = useState(false);
   const [theme, setTheme] = useState(lightTheme);
 
-  const GlobalStyles = styled.body`
+  const GlobalStyles = styled.div`
     background: ${theme.background};
     color: ${theme.color};
     min-height:100vh;

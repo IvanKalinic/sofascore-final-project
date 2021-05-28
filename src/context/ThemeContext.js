@@ -1,7 +1,8 @@
-import React, { useState, useContext, createContext } from "react";
+import React, { useState, useEffect,useContext, createContext} from "react";
 import { lightTheme, darkTheme } from "../components/Theme";
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 const ThemeContext = createContext();
 
@@ -16,8 +17,14 @@ export const useTheme = () => {
 }
 
 export const ThemeProvider = ({ children }) => {
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useLocalStorage("checked",false);
   const [theme, setTheme] = useState(lightTheme);
+  
+  useEffect(()=>{
+    if(checked){
+      setTheme(darkTheme);
+    }
+  },[]);
 
   const GlobalStyles = styled.div`
     background: ${theme.background};

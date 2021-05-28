@@ -33,7 +33,7 @@ nav {
   box-shadow: $dark-shadow;
 }
 .nav-toggle {
-  margin-left: -20px;
+  // margin-right: calc(60px + 30vw);
   font-size: 1.5rem;
   color: $nav-toggle;
   background: transparent;
@@ -81,9 +81,9 @@ nav {
 
 .switch-button {
   width: 20px;
-  margin-right: 300px;
+  // margin-right: 300px;
   position: relative;
-  right: -40px;
+  margin-right: calc(-10px + 50vw);
 }
 
 .user-picture {
@@ -101,20 +101,19 @@ nav {
   margin-left: 10px;
 }
 .logout {
-  margin-left:15px;
+  margin-left: 15px;
   cursor: pointer;
   color: $primary-color;
   background: transparent;
   border: transparent;
   text-transform: capitalize;
   letter-spacing: $spacing;
-  &:hover{
-    color:#940f2e;
+  &:hover {
+    color: #940f2e;
   }
 }
 
-
-@media screen and (min-width: 800px) {
+@media only screen and (min-width: 800px) {
   .nav-center {
     max-width: 1170px;
     margin: 0 auto;
@@ -149,20 +148,50 @@ nav {
     // position:absolute;
     // margin-right:400px;
     position: sticky;
-    margin-right: calc(-280px - 10vw);
+    margin-right:calc(-280px - 10vw);
   }
   .logo-container {
     position: sticky;
     margin-left: calc(-100px - 10vw);
   }
 }
-
-@media screen and (max-width: 550px) {
-  .nav-toggle {
-    margin-left: -80px;
-  }
+@media only screen and (min-width: 1300px) {
   .switch-button {
-    position: relative;
-    right: -10px;
+    position: sticky;
+    margin-right: calc(-280px - 10vw);
   }
 }
+@media only screen and (max-width: 688px) {
+  .nav-toggle {
+    margin-left: calc(-10px - 2vw);
+  }
+}
+@media only screen and (max-width: 528px) {
+  .nav-toggle {
+    margin-left: calc(-10px - 8vw);
+  }
+  .switch-button{
+     
+      height: 0px;
+      overflow: hidden;
+      transition: $transition;
+  }
+  
+}
+@media only screen and (max-width: 380px) {
+  .nav-toggle {
+    margin-left: calc(-10px - 30vw);
+  }
+
+  
+}
+// @media screen and (max-width: 490px) {
+//   .nav-toggle {
+//     margin-left:calc(50px);
+//   }
+//   // .switch-button {
+//   //   position: relative;
+//   //   right: calc(-10px + 10vw);
+//   // }
+
+// }

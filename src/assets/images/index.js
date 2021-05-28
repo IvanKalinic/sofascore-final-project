@@ -1,6 +1,6 @@
 import * as React from "react"
 
-export function LoginImage(props) {
+export const LoginImage = (props) => {
   return (
     <svg
       data-name="Layer 1"

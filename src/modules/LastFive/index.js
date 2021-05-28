@@ -1,24 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useMemo } from "react";
 import { useTrackedEvents } from "../../context/TrackedEventsContext";
 import { lastFive, convertTimestampToDatetime } from "../../utils/index";
 import { TeamImage, UniqueTournamentImage } from "../../components/index";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./index.scss";
 
-function LastFive() {
+const LastFive = () => {
   const [lastEvents, setLastEvents] = useState([]);
   const { findUser } = useTrackedEvents();
   const { user } = useAuth0();
 
-  let currentUser = findUser(user);
-
-  // console.log(currentUser);
+  let currentUser = useMemo(() => findUser(user), [findUser, user]);
 
   useEffect(() => {
     if (currentUser) setLastEvents(lastFive(currentUser.user.favourites));
   }, [currentUser]);
-
-  // console.log(lastEvents);
 
   return (
     <div className="footer-container">
@@ -55,6 +51,6 @@ function LastFive() {
       ))}
     </div>
   );
-}
+};
 
 export default LastFive;

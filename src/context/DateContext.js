@@ -12,7 +12,7 @@ export const useDate = () => {
 
   return dateContext;
 };
-export function DateProvider({ children }) {
+export const DateProvider = ({ children }) => {
   const [date, setDate] = useState(new Date(Date.now()));
 
   const handleDateChange =(e) => {

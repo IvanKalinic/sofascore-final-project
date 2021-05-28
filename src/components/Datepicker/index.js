@@ -3,7 +3,7 @@ import { DatePickerComponent } from "@syncfusion/ej2-react-calendars";
 import { useDate}  from "../../context/DateContext";
 import "./index.scss";
 
-function Datepicker() {
+const Datepicker = () => {
   const { date, handleDateChange } = useDate();
   return (
     <div className="container">

@@ -1,17 +1,17 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef,useCallback} from "react";
 import { capitalize } from "../../utils/index";
 import "./index.scss";
 
-function Dropdown({ handleItems, title, items }) {
+const Dropdown = ({ handleItems, title, items }) => {
   const [open, setOpen] = useState(false);
   const [selection, setSelection] = useState("");
   const ref = useRef();
 
-  const toggle = () => {
+  const toggle = useCallback(() => {
     setOpen(!open);
-  };
+  },[open]);
 
-  function handleOnClick(item) {
+  const handleOnClick = (item) => {
     setSelection(item);
     handleItems(item);
     toggle();
@@ -31,7 +31,7 @@ function Dropdown({ handleItems, title, items }) {
     return () => {
       document.body.removeEventListener("click", onBodyClicked);
     };
-  }, [open]);
+  }, [open,toggle]);
 
   return (
     <div className="dd-wrapper" ref={ref}>

@@ -3,7 +3,7 @@ import React, { memo } from "react";
 
 import "./index.scss";
 
-function Loader() {
+const Loader = () => {
   return (
     <div className="loader">
       <Spinner type="Oval" color="#404774" height={100} width={100} />

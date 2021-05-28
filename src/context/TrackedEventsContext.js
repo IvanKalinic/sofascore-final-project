@@ -5,7 +5,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 const TrackedEventsContext = createContext();
 
-export function useTrackedEvents() {
+export const useTrackedEvents = () => {
   const trackedEventsContext = useContext(TrackedEventsContext);
 
   if (trackedEventsContext === undefined) {
@@ -15,15 +15,14 @@ export function useTrackedEvents() {
   }
 
   return trackedEventsContext;
-}
+};
 
 let temp = [];
 
-export function TrackedEventsProvider({ children }) {
+export const TrackedEventsProvider = ({ children }) => {
   const [users, setUsers] = useLocalStorage("users", []);
   const [alert, setAlert] = useState({ show: false });
   const [profileImage, setProfileImage] = useState("");
-  // const [currentUser,setCurrentUser] = useLocalStorage("currentUser",{});
 
   const { user } = useAuth0();
 
@@ -39,10 +38,9 @@ export function TrackedEventsProvider({ children }) {
       if (!users.find((u) => u.user.name === user.name)) {
         temp = [];
         console.log(`Temp is ${temp}`);
-        // setCurrentUser(user);
       }
     }
-  }, []);
+  }, [users]);
 
   const addToTracked = (e, id) => {
     const newTrackedEvent = {
@@ -75,10 +73,8 @@ export function TrackedEventsProvider({ children }) {
   };
 
   const removeTracked = (e) => {
-    console.log(e.id);
     let userEvent = findUser(user);
     temp = userEvent.user.favourites.filter((ev) => ev.id !== e.id);
-    // console.log(temp);
     setUsers([
       {
         user: {
@@ -92,7 +88,6 @@ export function TrackedEventsProvider({ children }) {
 
   const findUser = (user) => {
     if (user) {
-      // console.log(users);
       return users.find((u) => u.user.name === user.name);
     }
   };
@@ -123,9 +118,6 @@ export function TrackedEventsProvider({ children }) {
     ]);
   };
 
-  // console.log(temp);
-  // console.log(users);
-
   const value = {
     users,
     alert,
@@ -142,7 +134,7 @@ export function TrackedEventsProvider({ children }) {
       {children}
     </TrackedEventsContext.Provider>
   );
-}
+};
 
 TrackedEventsProvider.propTypes = {
   children: PropTypes.node.isRequired,

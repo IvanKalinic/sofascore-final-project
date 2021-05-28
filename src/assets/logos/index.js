@@ -1,7 +1,7 @@
 import React from "react";
 import "./index.scss"
 
-export function SofaScoreLogo(props) {
+export const SofaScoreLogo = (props) => {
   return (
       <svg
         width="32pt"

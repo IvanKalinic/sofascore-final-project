@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useMemo } from "react";
 import { useTrackedEvents } from "../../context/TrackedEventsContext";
 import { Loader } from "../../components/index";
 import { TeamImage, UniqueTournamentImage } from "../../components/index";
@@ -8,13 +8,13 @@ import { Alert } from "../../components/index";
 import { DetailsBf, Delete } from "../../assets/icons";
 import { useAuth0 } from "@auth0/auth0-react";
 
-function TrackedEvents() {
+const TrackedEvents = () => {
   const { users, removeTracked, alert, handleAlert, findUser } =
     useTrackedEvents();
   const { user } = useAuth0();
   const clicked = useRef(0);
-  // let currentUser = findUser();
-  let currentUser = findUser(user);
+
+  let currentUser = useMemo(() => findUser(user), [findUser, user]);
 
   const handleRemove = (e) => {
     clicked.current++;
@@ -26,14 +26,11 @@ function TrackedEvents() {
       handleAlert({ type: "danger", text: "Event deleted" });
   }, [users]);
 
-  // console.log(currentUser.user.favourites);
-  //currentUser.user.favourites
-
   return (
     <div>
       {alert.show && <Alert type={alert.type} text={alert.text} />}
       {currentUser ? (
-        currentUser.user.favourites.map((event,i) => (
+        currentUser.user.favourites.map((event, i) => (
           <div className="event-container" key={i}>
             <div className="eventlist-container">
               {event.uniqueTournament ? (
@@ -73,6 +70,6 @@ function TrackedEvents() {
       )}
     </div>
   );
-}
+};
 
 export default TrackedEvents;

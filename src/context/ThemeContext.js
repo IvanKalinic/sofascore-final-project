@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 const ThemeContext = createContext();
 
-export function useTheme() {
+export const useTheme = () => {
   const themeContext = useContext(ThemeContext);
 
   if (themeContext === undefined) {
@@ -15,7 +15,7 @@ export function useTheme() {
   return themeContext;
 }
 
-export function ThemeProvider({ children }) {
+export const ThemeProvider = ({ children }) => {
   const [checked, setChecked] = useState(false);
   const [theme, setTheme] = useState(lightTheme);
 

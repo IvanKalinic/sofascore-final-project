@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef} from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import { NavLink, Link } from "react-router-dom";
 import SofaScoreLogo from "../../assets/images/sofascorelogo.png";
 import { MenuItem } from "../../assets/icons/index";
@@ -6,21 +6,21 @@ import SwitchButton from "../../components/SwitchButton";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./index.scss";
 
-
-function Navbar() {
+const Navbar = () => {
   const [showLinks, setShowLinks] = useState(false);
-  const { isAuthenticated, logout, user } =
-    useAuth0();
+  const { isAuthenticated, logout, user } = useAuth0();
 
   const linksContainerRef = useRef(null);
   const linksRef = useRef(null);
 
-  const isUser = isAuthenticated && user;
+  const isUser = useMemo(
+    () => isAuthenticated && user,
+    [isAuthenticated, user]
+  );
 
   const toggleLinks = () => {
     setShowLinks(!showLinks);
   };
- 
 
   useEffect(() => {
     const linksHeight = linksRef.current.getBoundingClientRect().height;
@@ -110,6 +110,6 @@ function Navbar() {
       </div>
     </nav>
   );
-}
+};
 
 export default Navbar;

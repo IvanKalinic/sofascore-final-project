@@ -3,7 +3,7 @@ import { getUniqueTournamentImage } from "../../apis/index";
 import PropTypes from "prop-types";
 import "./index.scss";
 
-function UniqueTournamentImage({ id }) {
+const UniqueTournamentImage = ({ id }) => {
   const [image, setImage] = useState();
 
   useEffect(() => {

@@ -3,7 +3,7 @@ import { getTeamImage } from "../../apis/index";
 import PropTypes from "prop-types";
 import "./index.scss";
 
-function TeamImage({ id }) {
+const TeamImage = ({ id }) => {
   const [image, setImage] = useState();
 
   useEffect(() => {

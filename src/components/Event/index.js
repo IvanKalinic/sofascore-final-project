@@ -5,7 +5,7 @@ import { convertTimestampToDatetime } from "../../utils/index";
 import { DetailsBf, Star, StarFilled } from "../../assets/icons";
 import "./index.scss";
 
-function Event({ id, event, handleAdd }) {
+const Event = ({ id, event, handleAdd }) => {
   return (
     <div className="clubs-container">
       <div className="details">

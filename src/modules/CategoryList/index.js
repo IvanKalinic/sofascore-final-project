@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { getCategoryList } from "../../apis/index";
 import { Link } from "react-router-dom";
 import { useCategories } from "../../context/CategoriesContext";
@@ -9,11 +9,12 @@ import { lightTheme } from "../../components/Theme";
 import Dropdown from "../../components/Dropdown";
 import Asia from "../../assets/images/asia.png";
 import SouthAmerica from "../../assets/images/southamerica.png";
+import International from "../../assets/images/world.png";
 import { getZone, getFormattedDate } from "../../utils/index";
 import { useDate } from "../../context/DateContext";
 import { useAuth0 } from "@auth0/auth0-react";
 
-function CategoryList() {
+const CategoryList = () => {
   const [categories, setCategories] = useState([]);
   const { sports } = useCategories();
   const { date } = useDate();
@@ -21,7 +22,10 @@ function CategoryList() {
   const { theme } = useTheme();
   const { isAuthenticated, user } = useAuth0();
 
-  const isUser = isAuthenticated && user;
+  const isUser = useMemo(
+    () => isAuthenticated && user,
+    [isAuthenticated, user]
+  );
 
   const handleSport = (sport) => {
     setSport(sport);
@@ -93,8 +97,7 @@ function CategoryList() {
                 ) : (
                   <img
                     src={`https://flagcdn.com/16x12/${category.category.alpha2?.toLowerCase()}.png`}
-                    alt=""
-                    onError={(i) => (i.target.style.display = "none")}
+                    onError={(e) => (e.target.style.display = "none")}
                   />
                 )}
                 {category.category.name === "Asia" ? (
@@ -102,6 +105,13 @@ function CategoryList() {
                 ) : null}
                 {category.category.name === "South America" ? (
                   <img src={SouthAmerica} className="southamerica-img" alt="" />
+                ) : null}
+                {category.category.name === "International" ? (
+                  <img
+                    src={International}
+                    className="southamerica-img"
+                    alt=""
+                  />
                 ) : null}
                 {category.category.name}
                 <span>({category.totalEvents})</span>
@@ -112,6 +122,6 @@ function CategoryList() {
       </ul>
     </div>
   );
-}
+};
 
 export default CategoryList;

@@ -15,7 +15,7 @@ const Signup = lazy(() => import("../modules/Signup"));
 const Error = lazy(() => import("../modules/Error"));
 const Profile = lazy(() => import("../modules/Profile"));
 
-function Routes() {
+const Routes = () => {
   return (
     <AuthWrapper>
       <Router>

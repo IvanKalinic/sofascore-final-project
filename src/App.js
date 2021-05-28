@@ -8,7 +8,7 @@ import { LastFive } from "./modules/index";
 import { DateProvider } from "./context/DateContext";
 
 
-function App() {
+const App = () => {
   return (
     <TrackedEventsProvider>
         <ThemeProvider>

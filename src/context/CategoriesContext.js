@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const CategoriesContext = createContext();
 
-export function useCategories() {
+export const useCategories = () => {
   const categoriesContext = useContext(CategoriesContext);
 
   if (categoriesContext === undefined) {
@@ -14,7 +14,7 @@ export function useCategories() {
   return categoriesContext;
 }
 
-export function CategoriesProvider({ children }) {
+export const CategoriesProvider = ({ children }) => {
 
   const sports = [
     { id: 1, value: "Football" },

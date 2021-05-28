@@ -3,10 +3,10 @@ import { useParams } from "react-router";
 import { getEventDetails } from "../../apis/index";
 import { Loader } from "../../components/index";
 import { useDate } from "../../context/DateContext";
-import { getFormattedDetailsDate } from "../../utils/index"
-import "./index.scss"
+import { getFormattedDetailsDate } from "../../utils/index";
+import "./index.scss";
 
-function EventDetails() {
+const EventDetails = () => {
   const { eventId } = useParams();
   const [details, setDetails] = useState(null);
   const { date } = useDate();
@@ -15,7 +15,6 @@ function EventDetails() {
     getEventDetails(eventId).then((res) => setDetails(res.event));
   }, [eventId]);
 
-  console.log(details);
   return (
     <>
       {details ? (
@@ -24,7 +23,7 @@ function EventDetails() {
           {details.tournament.name}
           <p>
             {details.homeTeam.name} - {details.awayTeam.name}{" "}
-          {details.round ? {",Gameweek ":details.roundInfo.round}  : null}
+            {details.round ? { ",Gameweek ": details.roundInfo.round } : null}
           </p>
           <article>
             {details.venue && (
@@ -47,6 +46,6 @@ function EventDetails() {
       )}
     </>
   );
-}
+};
 
 export default EventDetails;

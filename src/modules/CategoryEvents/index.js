@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Redirect, useParams } from "react-router";
 import { getCategoryEvents } from "../../apis/index";
 import { useCategories } from "../../context/CategoriesContext";
@@ -11,7 +11,7 @@ import { getFormattedDate } from "../../utils/index";
 import { CaretUp, CaretDown } from "../../assets/icons";
 import { useAuth0 } from "@auth0/auth0-react";
 
-function CategoryEvents() {
+const CategoryEvents =() => {
   const { id } = useParams();
   const { date } = useCategories();
   const { addToTracked, removeTracked, alert, handleAlert } =
@@ -51,8 +51,7 @@ function CategoryEvents() {
   };
   // console.log(user);
 
-  useEffect(() => {
-    setTournaments([]);
+  const getCategories = () =>{
     let foundUser = findUser(user);
     // console.log(foundUser);
     getCategoryEvents(id, getFormattedDate(date))
@@ -120,9 +119,16 @@ function CategoryEvents() {
         setError(true);
         console.log("this is catch block");
       });
+  }
+
+  useEffect(() => {
+    setTournaments([]);
+    getCategories();
+    setInterval(() => {
+      getCategories();
+    }, 50000);
   }, [id]);
 
-  // console.log(tournaments);
 
   return (
     <div className="parent-container">
@@ -151,13 +157,6 @@ function CategoryEvents() {
                         key={ev.id}
                         event={ev}
                         handleAdd={handleAdd}
-                        // eventId={ev.id}
-                        // startTimestamp={ev.startTimestamp}
-                        // homeTeam={ev.homeTeam}
-                        // awayTeam={ev.awayTeam}
-                        // awayScore={ev.awayScore.current}
-                        // homeScore={ev.homeScore.current}
-                        // status={ev.status.code}
                       />
                     ) : null}
                   </div>

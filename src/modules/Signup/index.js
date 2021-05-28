@@ -1,6 +1,6 @@
 import React,{memo} from 'react'
 
-function Signup() {
+const Signup = () => {
     return (
         <div>
             Signup component

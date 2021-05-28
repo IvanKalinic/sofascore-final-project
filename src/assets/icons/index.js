@@ -2,7 +2,7 @@ import React from "react";
 import { lightTheme } from "../../components/Theme";
 import "./index.scss";
 
-export function MenuItem(props) {
+export const MenuItem = (props) =>{
   return (
     <svg
       fill="#ffffff"
@@ -16,7 +16,7 @@ export function MenuItem(props) {
   );
 }
 
-export function Sun(props) {
+export const Sun = (props) =>{
   return (
     <svg
       fill={props.theme === lightTheme ? "yellow" : null}
@@ -33,7 +33,7 @@ export function Sun(props) {
   );
 }
 
-export function Moon(props) {
+export const Moon = (props) => {
   return (
     <svg
       className="moon"
@@ -57,7 +57,7 @@ export function Moon(props) {
   );
 }
 
-export function StarFilled(props) {
+export const StarFilled = (props) => {
   return (
     <svg
       className="star"
@@ -74,7 +74,7 @@ export function StarFilled(props) {
   );
 }
 
-export function Star(props) {
+export const Star = (props) => {
   return (
     <svg
       className="star"
@@ -89,7 +89,7 @@ export function Star(props) {
   );
 }
 
-export function DetailsBf(props) {
+export const DetailsBf = (props) => {
   return (
     <svg
       className="bf"
@@ -111,7 +111,7 @@ export function DetailsBf(props) {
   );
 }
 
-export function DetailsAf(props) {
+export const DetailsAf = (props) => {
   return (
     <svg
       x="0px"
@@ -127,7 +127,7 @@ export function DetailsAf(props) {
   );
 }
 
-export function CaretDown(props) {
+export const CaretDown = (props) => {
   return (
     <svg width="32px" height="32px" viewBox="0 0 292.362 292.362" {...props}>
       <path d="M286.935 69.377c-3.614-3.617-7.898-5.424-12.848-5.424H18.274c-4.952 0-9.233 1.807-12.85 5.424C1.807 72.998 0 77.279 0 82.228c0 4.948 1.807 9.229 5.424 12.847l127.907 127.907c3.621 3.617 7.902 5.428 12.85 5.428s9.233-1.811 12.847-5.428L286.935 95.074c3.613-3.617 5.427-7.898 5.427-12.847 0-4.948-1.814-9.229-5.427-12.85z" />
@@ -135,7 +135,7 @@ export function CaretDown(props) {
   );
 }
 
-export function CaretUp(props) {
+export const CaretUp = (props) => {
   return (
     <svg
       x="0px"
@@ -151,7 +151,7 @@ export function CaretUp(props) {
   );
 }
 
-export function Delete(props) {
+export const Delete = (props) => {
   return (
     <svg
       className="delete"
@@ -174,7 +174,7 @@ export function Delete(props) {
   );
 }
 
-export function FileUpload(props) {
+export const FileUpload = (props) => {
   return (
     <svg height={32} viewBox="0 0 64 64" width={32} {...props}>
       <path d="M23.414 21.414L30 14.828V44a2 2 0 004 0V14.828l6.586 6.586c.39.391.902.586 1.414.586s1.024-.195 1.414-.586a2 2 0 000-2.828l-10-10a2 2 0 00-2.828 0l-10 10a2 2 0 102.828 2.828z" />
@@ -183,7 +183,7 @@ export function FileUpload(props) {
   )
 }
 
-export function Close(props) {
+export const Close = (props) => {
   return (
     <svg height="24pt" viewBox="0 0 329.26933 329" width="24pt" {...props} fill="black">
       <path d="M194.8 164.77L323.013 36.555c8.343-8.34 8.343-21.825 0-30.164-8.34-8.34-21.825-8.34-30.164 0L164.633 134.605 36.422 6.391c-8.344-8.34-21.824-8.34-30.164 0-8.344 8.34-8.344 21.824 0 30.164l128.21 128.215L6.259 292.984c-8.344 8.34-8.344 21.825 0 30.164a21.266 21.266 0 0015.082 6.25c5.46 0 10.922-2.09 15.082-6.25l128.21-128.214 128.216 128.214a21.273 21.273 0 0015.082 6.25c5.46 0 10.922-2.09 15.082-6.25 8.343-8.34 8.343-21.824 0-30.164zm0 0" />

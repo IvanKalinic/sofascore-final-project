@@ -3,7 +3,7 @@ import { useTheme } from "../../context/ThemeContext";
 import "./index.scss";
 import { Sun, Moon } from "../../assets/icons/index";
 
-function SwitchButton() {
+const SwitchButton = () => {
   const {theme,checked,toggleTheme } = useTheme();
 
   return (

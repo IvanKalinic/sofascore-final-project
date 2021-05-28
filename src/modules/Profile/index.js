@@ -1,32 +1,32 @@
-import React, { useState } from "react";
+import React, { useState,useMemo } from "react";
 import Football from "../../assets/images/football.jpg";
 import { Close, FileUpload } from "../../assets/icons/index";
 import "./index.scss";
 import { useTrackedEvents } from "../../context/TrackedEventsContext";
 import { useAuth0 } from "@auth0/auth0-react";
 
-function Profile() {
+const Profile = () => {
   const [image, setImage] = useState("");
   const [isUploaded, setIsUploaded] = useState(false);
   const [typeFile, setTypeFile] = useState("");
   const { saveImage, deleteImage, findUser } = useTrackedEvents();
   const { user } = useAuth0();
 
-  let currentUser = findUser(user);
+  let currentUser = useMemo(() => findUser(user), [findUser, user]);
 
-  function handleImageChange(e) {
+  const handleImageChange = (e) => {
     if (e.target.files && e.target.files[0]) {
       setTypeFile(e.target.files[0].type);
       let reader = new FileReader();
 
-      reader.onload = function (e) {
+      reader.onload = (e) => {
         setImage(e.target.result);
         setIsUploaded(true);
       };
 
       reader.readAsDataURL(e.target.files[0]);
     }
-  }
+  };
 
   return (
     <div className="layout">
@@ -96,13 +96,15 @@ function Profile() {
             <span onClick={deleteImage} className="close-btn">
               <Close />
             </span>
-            {currentUser ? <img src={currentUser.user.profileImage} alt="" /> : null}
+            {currentUser ? (
+              <img src={currentUser.user.profileImage} alt="" />
+            ) : null}
           </div>
         )}
       </div>
     </div>
   );
-}
+};
 export default Profile;
 
 // return (

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect} from "react";
 import { Redirect, useParams } from "react-router";
 import { getCategoryEvents } from "../../apis/index";
 import { useCategories } from "../../context/CategoriesContext";
@@ -11,14 +11,13 @@ import { getFormattedDate } from "../../utils/index";
 import { CaretUp, CaretDown } from "../../assets/icons";
 import { useAuth0 } from "@auth0/auth0-react";
 
-const CategoryEvents =() => {
+const CategoryEvents = () => {
   const { id } = useParams();
   const { date } = useCategories();
-  const { addToTracked, removeTracked, alert, handleAlert } =
+  const { addToTracked, removeTracked, alert, handleAlert, favorites } =
     useTrackedEvents();
   const [error, setError] = useState(false);
   const [tournaments, setTournaments] = useState([]);
-  const { findUser } = useTrackedEvents();
   const { user } = useAuth0();
 
   const handleAdd = (e) => {
@@ -49,21 +48,17 @@ const CategoryEvents =() => {
       })
     );
   };
-  // console.log(user);
 
-  const getCategories = () =>{
-    let foundUser = findUser(user);
-    // console.log(foundUser);
+  const getCategories = () => {
     getCategoryEvents(id, getFormattedDate(date))
       .then((res) => {
         if (res.events.length > 0) {
           const value = res.events.map((e) => {
-            if (foundUser) {
-              const response = foundUser.user.favourites.find(
+            if (favorites[user?.sub]) {
+              const response = favorites[user?.sub].find(
                 (tr) => tr.id === e.id
               );
               if (response) {
-                //-1
                 return {
                   ...e,
                   clicked: true,
@@ -119,7 +114,7 @@ const CategoryEvents =() => {
         setError(true);
         console.log("this is catch block");
       });
-  }
+  };
 
   useEffect(() => {
     setTournaments([]);
@@ -128,7 +123,6 @@ const CategoryEvents =() => {
       getCategories();
     }, 50000);
   }, [id]);
-
 
   return (
     <div className="parent-container">
@@ -170,6 +164,6 @@ const CategoryEvents =() => {
       )}
     </div>
   );
-}
+};
 
 export default CategoryEvents;

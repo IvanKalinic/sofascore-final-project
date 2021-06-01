@@ -9,12 +9,10 @@ import { DetailsBf, Delete } from "../../assets/icons";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const TrackedEvents = () => {
-  const { users, removeTracked, alert, handleAlert, findUser } =
+  const { users, removeTracked, alert, handleAlert, favorites } =
     useTrackedEvents();
   const { user } = useAuth0();
   const clicked = useRef(0);
-
-  let currentUser = useMemo(() => findUser(user), [findUser, user]);
 
   const handleRemove = (e) => {
     clicked.current++;
@@ -24,13 +22,13 @@ const TrackedEvents = () => {
   useEffect(() => {
     if (clicked.current > 0)
       handleAlert({ type: "danger", text: "Event deleted" });
-  }, [users]);
+  }, [users, handleAlert]);
 
   return (
     <div>
       {alert.show && <Alert type={alert.type} text={alert.text} />}
-      {currentUser ? (
-        currentUser.user.favourites.map((event, i) => (
+      {favorites ? (
+        (favorites?.[user?.sub] ?? []).map((event, i) => (
           <div className="event-container" key={i}>
             <div className="eventlist-container">
               {event.uniqueTournament ? (

@@ -1,5 +1,5 @@
-import React, { memo } from "react";
-import "./App.css";
+import React from "react";
+import "./App.scss";
 import { CategoriesProvider } from "./context/CategoriesContext";
 import Routes from "./routes/index";
 import { ThemeProvider } from "./context/ThemeContext";
@@ -27,4 +27,4 @@ const App = () => {
   );
 }
 
-export default memo(App);
+export default App;

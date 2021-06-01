@@ -1,4 +1,4 @@
-import React, { useState, useContext, createContext, useEffect } from "react";
+import React, { useState, useContext, createContext, useEffect, useCallback } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
 import PropTypes from "prop-types";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -21,17 +21,19 @@ let temp = [];
 
 export const TrackedEventsProvider = ({ children }) => {
   const [users, setUsers] = useLocalStorage("users", []);
+  const [favorites, setFavorites] = useLocalStorage("favorites", {})
+
   const [alert, setAlert] = useState({ show: false });
   const [profileImage, setProfileImage] = useState("");
 
   const { user } = useAuth0();
 
-  const handleAlert = ({ type, text }) => {
+  const handleAlert = useCallback(({ type, text }) => {
     setAlert({ show: true, type, text });
     setTimeout(() => {
       setAlert({ show: false });
     }, 1000);
-  };
+  },[setAlert]);
 
   useEffect(() => {
     if (users.lenght > 0) {
@@ -40,7 +42,7 @@ export const TrackedEventsProvider = ({ children }) => {
         console.log(`Temp is ${temp}`);
       }
     }
-  }, [users]);
+  }, [users,user?.name]);
 
   const addToTracked = (e, id) => {
     const newTrackedEvent = {
@@ -61,30 +63,26 @@ export const TrackedEventsProvider = ({ children }) => {
     };
     temp.push(newTrackedEvent);
 
+    setFavorites({ ...favorites, [user.sub]: [ ...(favorites[user.sub] || []), newTrackedEvent ] })
+
     setUsers([
       {
         user: {
           ...user,
           profileImage: profileImage,
-          favourites: temp,
         },
       },
     ]);
   };
 
   const removeTracked = (e) => {
-    let userEvent = findUser(user);
-    temp = userEvent.user.favourites.filter((ev) => ev.id !== e.id);
-    setUsers([
-      {
-        user: {
-          ...user,
-          profileImage: profileImage,
-          favourites: temp,
-        },
-      },
-    ]);
-  };
+    const filteredUserFavorites =  (favorites?.[user?.sub] || []).filter((ev) => ev.id !== e.id);
+
+    setFavorites({
+      ...favorites,
+      [user.sub]: [...filteredUserFavorites]
+    })
+  }
 
   const findUser = (user) => {
     if (user) {
@@ -98,7 +96,6 @@ export const TrackedEventsProvider = ({ children }) => {
       {
         user: {
           ...user,
-          favourites: temp,
           profileImage: image,
         },
       },
@@ -111,7 +108,6 @@ export const TrackedEventsProvider = ({ children }) => {
       {
         user: {
           ...user,
-          favourites: temp,
           profileImage: "",
         },
       },
@@ -119,6 +115,7 @@ export const TrackedEventsProvider = ({ children }) => {
   };
 
   const value = {
+    favorites,
     users,
     alert,
     findUser,

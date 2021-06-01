@@ -7,14 +7,12 @@ import "./index.scss";
 
 const LastFive = () => {
   const [lastEvents, setLastEvents] = useState([]);
-  const { findUser } = useTrackedEvents();
+  const { favorites } = useTrackedEvents();
   const { user } = useAuth0();
 
-  let currentUser = useMemo(() => findUser(user), [findUser, user]);
-
   useEffect(() => {
-    if (currentUser) setLastEvents(lastFive(currentUser.user.favourites));
-  }, [currentUser]);
+    if (favorites[user?.sub]) setLastEvents(lastFive(favorites[user?.sub]));
+  }, [favorites,user?.sub]);
 
   return (
     <div className="footer-container">

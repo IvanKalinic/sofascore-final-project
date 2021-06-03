@@ -24,7 +24,7 @@ export const ThemeProvider = ({ children }) => {
     if(checked){
       setTheme(darkTheme);
     }
-  },[]);
+  },[checked]);
 
   const GlobalStyles = styled.div`
     background: ${theme.background};
@@ -47,7 +47,7 @@ export const ThemeProvider = ({ children }) => {
     .tournament{
       color:#0788d9;
     }
-  
+    
     `;
 
   const toggleTheme = () => {

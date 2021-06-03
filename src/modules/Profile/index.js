@@ -31,8 +31,7 @@ const Profile = () => {
   return (
     <div className="layout">
       <div className="image-container">
-        <h2>Upload your profile image</h2>
-
+        <h2 className="upload-text">Upload your profile image</h2>
         <div className="box-upload">
           <div className="image-upload">
             {!isUploaded ? (
@@ -88,7 +87,7 @@ const Profile = () => {
       </div>
       <div>
         {currentUser && !currentUser.user.profileImage ? (
-          <button type="submit" onClick={() => saveImage(image)}>
+          <button type="submit" className="btn" onClick={() => saveImage(image)}>
             Submit
           </button>
         ) : (

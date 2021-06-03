@@ -38,9 +38,10 @@
     align-items: center;
     justify-content: center;
 
-    background: #F5F8FF;
+    // background: #F5F8FF;
 }
 .image-container{
+    margin-top:10px;
     display: flex;
     flex-direction: column;
     background: #fff;
@@ -119,4 +120,7 @@
     :hover {
         opacity: 1;
     }   
+}
+.upload-text{
+    color:black !important;
 }

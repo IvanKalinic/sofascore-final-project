@@ -9,7 +9,7 @@ import { DetailsBf, Delete } from "../../assets/icons";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const TrackedEvents = () => {
-  const { users, removeTracked, alert, handleAlert, favorites } =
+  const { removeTracked, alert, handleAlert, favorites } =
     useTrackedEvents();
   const { user } = useAuth0();
   const clicked = useRef(0);
@@ -22,7 +22,7 @@ const TrackedEvents = () => {
   useEffect(() => {
     if (clicked.current > 0)
       handleAlert({ type: "danger", text: "Event deleted" });
-  }, [users, handleAlert]);
+  }, [favorites,handleAlert]);
 
   return (
     <div>

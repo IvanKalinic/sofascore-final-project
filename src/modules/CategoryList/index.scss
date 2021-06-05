@@ -5,9 +5,12 @@
 }
 .form-container {
   @include flexbox(column, center, center);
- 
 }
 .form-item {
+  width: calc(100% - 30px);
+  padding: 0 15px;
+  display: flex;
+  justify-content: center;
   margin-bottom: 30px;
 }
 
@@ -15,14 +18,17 @@
   @include flexbox(column, center, center);
   list-style-type: none;
   margin-bottom: 10px;
+  padding: 0 15px;
+  width: calc(100% - 30px);
 }
 
 .style {
   @include flexbox(row, center, center);
   min-width: 60px;
-  width: 300px;
+  width: 100%;
+  max-width: 300px;
   height: 20px;
-  margin: 5px 60px;
+  margin: 5px 0;
   padding: 20px;
   border-radius: 5px;
   box-shadow: $light-shadow;
@@ -34,14 +40,23 @@
     margin-right: 5px;
   }
 }
+.link-li {
+  @include flexbox(row, center, center);
+  width: 100%;
 
+}
 .light-link {
+  @include flexbox(row, center, center);
   color: $light-link;
   text-decoration: none;
+  width: 100%;
+
 }
 .dark-link {
+  @include flexbox(row, center, center);
   color: $dark-link;
   text-decoration: none;
+  width: 100%;
 }
 p {
   margin-top: 10px;
@@ -58,7 +73,7 @@ p {
 }
 .user-container {
   margin-left: 15px;
-  margin-top:15px;
+  margin-top: 15px;
   @include flexbox(row, center, center);
 }
 .user-text {

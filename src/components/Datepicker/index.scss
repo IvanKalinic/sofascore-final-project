@@ -1,5 +1,22 @@
-.container{
+%datepicker {
     width:300px;
-    margin:auto;
-}
+    display: flex;
+    justify-content: center;
+  }
 
+.datepicker-true{
+   span{
+       input{
+           color:white !important;
+       }
+       span{
+           color:white !important;
+       }
+   }
+    @extend %datepicker;
+   
+}
+.datepicker-false{
+    @extend %datepicker;
+
+}

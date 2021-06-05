@@ -82,12 +82,12 @@ const CategoryList = () => {
       </p>
       <ul className="categories-container">
         {categories.map((category, i) => (
-          <Link
-            key={i}
-            className={theme === lightTheme ? "light-link" : "dark-link"}
-            to={`/category/${category.category.id}`}
-          >
-            <li>
+          <li className="link-li">
+            <Link
+              key={i}
+              className={theme === lightTheme ? "light-link" : "dark-link"}
+              to={`/category/${category.category.id}`}
+            >
               <div className="style">
                 {category.alpha ? (
                   <img
@@ -116,8 +116,8 @@ const CategoryList = () => {
                 {category.category.name}
                 <span>({category.totalEvents})</span>
               </div>
-            </li>
-          </Link>
+            </Link>
+          </li>
         ))}
       </ul>
     </div>

@@ -1,4 +1,4 @@
-#App deployed on
+# App deployed on
 https://sofascore-finalproject.netlify.app/
 
 # Getting Started with Create React App

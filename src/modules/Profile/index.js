@@ -1,5 +1,4 @@
 import React, { useState,useMemo } from "react";
-import Football from "../../assets/images/football.jpg";
 import { Close, FileUpload } from "../../assets/icons/index";
 import "./index.scss";
 import { useTrackedEvents } from "../../context/TrackedEventsContext";
@@ -106,12 +105,3 @@ const Profile = () => {
 };
 export default Profile;
 
-// return (
-//   <div className="profile-container">
-//     <img className="profile-container-img" src={Football} />
-//     <div className="profile-container-filter"></div>
-//     <div className="profile-container-hello">
-//       <h1>Hello</h1>
-//     </div>
-//   </div>
-// );

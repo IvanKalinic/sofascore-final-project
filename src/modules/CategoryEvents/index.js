@@ -136,6 +136,7 @@ const CategoryEvents = () => {
               <div className="eventlist-container">
                 <div className="tournament-container">
                   <UniqueTournamentImage
+                  key={e.tournament.id}
                     id={e.tournament.uniqueTournament.id}
                   />
                   <h4 className="tournament">{e.tournament.name}</h4>

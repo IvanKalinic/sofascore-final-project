@@ -10,7 +10,7 @@ import Dropdown from "../../components/Dropdown";
 import Asia from "../../assets/images/asia.png";
 import SouthAmerica from "../../assets/images/southamerica.png";
 import International from "../../assets/images/world.png";
-import Europe from "../../assets/images/europe.png"
+import Europe from "../../assets/images/europe.png";
 import { getZone, getFormattedDate } from "../../utils/index";
 import { useDate } from "../../context/DateContext";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -99,6 +99,7 @@ const CategoryList = () => {
                   <img
                     src={`https://flagcdn.com/16x12/${category.category.alpha2?.toLowerCase()}.png`}
                     onError={(e) => (e.target.style.display = "none")}
+                    alt=""
                   />
                 )}
                 {category.category.name === "Asia" ? (

@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import { useTrackedEvents } from "../../context/TrackedEventsContext";
 import { lastFive, convertTimestampToDatetime } from "../../utils/index";
 import { TeamImage, UniqueTournamentImage } from "../../components/index";

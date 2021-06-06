@@ -1,5 +1,4 @@
 import React from "react";
-import { lightTheme } from "../../components/Theme";
 import {useTheme} from "../../context/ThemeContext";
 import "./index.scss";
 

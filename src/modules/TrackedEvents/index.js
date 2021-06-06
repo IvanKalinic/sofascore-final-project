@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useMemo } from "react";
+import React, { useEffect, useRef} from "react";
 import { useTrackedEvents } from "../../context/TrackedEventsContext";
 import { Loader } from "../../components/index";
 import { TeamImage, UniqueTournamentImage } from "../../components/index";

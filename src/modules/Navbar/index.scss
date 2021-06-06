@@ -12,7 +12,6 @@
 .img-style {
   height: 50px;
   width: 50px;
-  // margin-left:-50px;
 }
 .link-container {
   width: 100%;
@@ -33,7 +32,6 @@ nav {
   box-shadow: $dark-shadow;
 }
 .nav-toggle {
-  // margin-right: calc(60px + 30vw);
   font-size: 1.5rem;
   color: $nav-toggle;
   background: transparent;
@@ -81,7 +79,6 @@ nav {
 
 .switch-button {
   width: 20px;
-  // margin-right: 300px;
   position: relative;
   margin-right: calc(-10px + 50vw);
 }
@@ -145,8 +142,6 @@ nav {
     @include flexbox(row, center, "");
   }
   .switch-button {
-    // position:absolute;
-    // margin-right:400px;
     position: sticky;
     margin-right:calc(-280px - 10vw);
   }
@@ -185,13 +180,3 @@ nav {
 
   
 }
-// @media screen and (max-width: 490px) {
-//   .nav-toggle {
-//     margin-left:calc(50px);
-//   }
-//   // .switch-button {
-//   //   position: relative;
-//   //   right: calc(-10px + 10vw);
-//   // }
-
-// }

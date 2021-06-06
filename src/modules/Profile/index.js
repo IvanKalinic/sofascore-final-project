@@ -87,7 +87,7 @@ const Profile = () => {
       </div>
       <div>
         {currentUser && !currentUser.user.profileImage ? (
-          <button type="submit" className="btn" onClick={() => saveImage(image)}>
+          <button type="submit" className="btn btn-submit" onClick={() => saveImage(image)}>
             Submit
           </button>
         ) : (

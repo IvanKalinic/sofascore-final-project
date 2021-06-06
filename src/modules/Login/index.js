@@ -8,7 +8,7 @@ const Login = () => {
   const { loginWithRedirect } = useAuth0();
   return (
     <Wrapper>
-      <div className="container">
+      <div className="login-btn-container">
         <LoginImage />
         <h1>SofaScore user</h1>
         <button className="btn" onClick={loginWithRedirect}>

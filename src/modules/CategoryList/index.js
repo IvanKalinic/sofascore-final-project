@@ -111,7 +111,7 @@ const CategoryList = () => {
                 {category.category.name === "Europe" ? (
                   <img src={Europe} className="southamerica-img" alt="" />
                 ) : null}
-                {category.category.name === "International" ? (
+                {category.category.name === "International" || category.category.name === "World" ? (
                   <img
                     src={International}
                     className="southamerica-img"

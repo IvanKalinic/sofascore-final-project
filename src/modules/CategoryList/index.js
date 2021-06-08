@@ -3,7 +3,6 @@ import { getCategoryList } from "../../apis/index";
 import { Link } from "react-router-dom";
 import { useCategories } from "../../context/CategoriesContext";
 import { Datepicker } from "../../components/index";
-import "./index.scss";
 import { useTheme } from "../../context/ThemeContext";
 import { lightTheme } from "../../components/Theme";
 import Dropdown from "../../components/Dropdown";
@@ -14,6 +13,7 @@ import Europe from "../../assets/images/europe.png";
 import { getZone, getFormattedDate } from "../../utils/index";
 import { useDate } from "../../context/DateContext";
 import { useAuth0 } from "@auth0/auth0-react";
+import "./index.scss";
 
 const CategoryList = () => {
   const [categories, setCategories] = useState([]);

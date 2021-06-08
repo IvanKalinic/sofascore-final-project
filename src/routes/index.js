@@ -1,7 +1,6 @@
 import React, { lazy, Suspense, memo } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-// import { CategoryEvents, CategoryList, EventDetails, Navbar } from "../modules/index";
-import { Navbar } from "../modules/index";
+  import { Navbar } from "../modules/index";
 import { Loader } from "../components/index";
 import PrivateRoute from "./PrivateRoute";
 import AuthWrapper from "../components/AuthWrapper";
